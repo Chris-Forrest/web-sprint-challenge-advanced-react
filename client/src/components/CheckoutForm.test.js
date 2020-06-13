@@ -53,7 +53,7 @@ test("form shows success message on submit with form details", () => {
 });
 
 /**********make a test that fails  ************************/
-test("failing test", () => {
+test("make a failing test", () => {
 
     const { getByLabelText, getByDisplayValue } = render(< CheckoutForm/>);
 
