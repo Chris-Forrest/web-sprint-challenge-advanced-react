@@ -22,4 +22,18 @@ test("form shows success message on submit with form details", () => {
     const city = getByLabelText(/city/i);
     const state = getByLabelText(/state/i);
     const zip = getByLabelText(/zip/i);
+
+    expect(firstName).toBeInTheDocument();
+    expect(lastName).toBeInTheDocument();
+    expect(address).toBeInTheDocument();
+    expect(city).toBeInTheDocument();
+    expect(state).toBeInTheDocument();
+    expect(zip).toBeInTheDocument();
+
+    fireEvent.change(firstName, { target: { value: "Whyyou" }})
+    fireEvent.change(lastName, { target: { value: "Wantto" }})
+    fireEvent.change(address, { target: { value: "know areyou " }})
+    fireEvent.change(city, { target: { value: "plotting" }})
+    fireEvent.change(state, { target: { value: "OnMe" }})
+    fireEvent.change(zip, { target: { value: 555777 }})
 });
