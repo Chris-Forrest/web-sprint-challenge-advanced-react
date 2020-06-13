@@ -53,3 +53,14 @@ test("form shows success message on submit with form details", () => {
 });
 
 /**********make a test that fails  ************************/
+test("failing test", () => {
+
+    const { getByLabelText, getByDisplayValue } = render(< CheckoutForm/>);
+
+    const firstNameInput = getByLabelText(/first name/i);
+
+    fireEvent.change(firstNameInput, { target: { value: "Whyyou" }})
+// the test fails because i'm looking for something that isn't there 
+    expect(getByDisplayValue(/steve/i)).toBeInTheDocument()
+
+});
