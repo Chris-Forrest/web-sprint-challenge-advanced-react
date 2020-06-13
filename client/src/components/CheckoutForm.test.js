@@ -14,7 +14,7 @@ test("form header renders", () => {
 });
 
 test("form shows success message on submit with form details", () => {
-    const { getByLabelText, getByTestId } = render(<CheckoutForm />);
+    const { getByLabelText, getByTestId, getByDisplayValue } = render(<CheckoutForm />);
 
     const firstName = getByLabelText(/first name/i);
     const lastName = getByLabelText(/last name/i);
@@ -36,4 +36,20 @@ test("form shows success message on submit with form details", () => {
     fireEvent.change(city, { target: { value: "plotting" }})
     fireEvent.change(state, { target: { value: "OnMe" }})
     fireEvent.change(zip, { target: { value: 555777 }})
+
+    expect(getByDisplayValue(/whyyou/i)).toBeInTheDocument()
+    expect(getByDisplayValue(/wantto/i)).toBeInTheDocument()
+    expect(getByDisplayValue(/know areyou/i)).toBeInTheDocument()
+    expect(getByDisplayValue(/plotting/i)).toBeInTheDocument()
+    expect(getByDisplayValue(/onme/i)).toBeInTheDocument()
+    expect(getByDisplayValue(/555777/i)).toBeInTheDocument()
+
+    const checkoutSubmit = getByTestId(/checkout/i);
+    expect(checkoutSubmit).toBeInTheDocument();
+    fireEvent.click(checkoutSubmit)
+
+    const successMessage = getByTestId(/successMessage/i)
+    expect(successMessage).toBeInTheDocument()
 });
+
+/**********make a test that fails  ************************/
